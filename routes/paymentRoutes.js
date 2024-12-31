@@ -1,18 +1,13 @@
 const router = require('express').Router();
 const paymentController = require('../controllers/payment/paymentController');
 const { authMiddleware } = require('../middlewares/authMiddleware');
-const {
-    getSupplierProducts,
-    createSupplierOrder,
-} = require('../controllers/supplierController');
+
 
 // Paystack Payment Routes
 router.post('/payment/create-paystack-payment', authMiddleware, paymentController.create_paystack_payment);
 router.get('/payment/callback', paymentController.payment_callback);
 
-// Supplier Management Routes
-router.get('/products', getSupplierProducts); // Fetch all supplier products
-router.post('/order', createSupplierOrder); // Create supplier order
+
 ;
 // Seller Payment Account Routes
 router.get('/payment/create-paystack-account', authMiddleware, paymentController.create_paystack_account);

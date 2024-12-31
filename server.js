@@ -5,7 +5,6 @@ const cors = require('cors');
 const http = require('http');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-// const Aliexpress = require('./models/aliexpressModel');  // Import the Product model
 const paystack = require('paystack')('YOUR_PAYSTACK_SECRET_KEY'); // Add your Paystack secret key
 require('dotenv').config();
 const socket = require('socket.io');
@@ -13,21 +12,13 @@ const socket = require('socket.io');
 const server = http.createServer(app);
 
 app.use(cors({
-    origin: [
-        'http://localhost:3000', 
-        'http://localhost:3001',
-        'https://frontend.vercel.com' 
-    ],
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 
 const io = socket(server, {
     cors: {
-        origin: [
-            'http://localhost:3000', 
-            'http://localhost:3001',
-            'https://frontend.vercel.com' // Added frontend URL
-        ],
+        origin: ['http://localhost:3000', 'http://localhost:3001'],
         credentials: true
     }
 });
@@ -221,7 +212,6 @@ app.post('/api/v2/order/verify-payment', async (req, res) => {
 
 // Other routes
 app.use('/api', require('./routes/chatRoutes'));
-app.use('/api', require('./routes/supplierRoutes'));
 app.use('/api', require('./routes/paymentRoutes'));
 app.use('/api', require('./routes/bannerRoutes'));
 app.use('/api', require('./routes/dashboard/dashboardIndexRoutes'));
