@@ -12,13 +12,13 @@ const socket = require('socket.io');
 const server = http.createServer(app);
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://ridan-client-pxwc.vercel.app/'],
     credentials: true
 }));
 
 const io = socket(server, {
     cors: {
-        origin: ['http://localhost:3000', 'http://localhost:3001'],
+        origin: ['http://localhost:3000', 'http://localhost:3001', 'https://ridan-client-pxwc.vercel.app/'],
         credentials: true
     }
 });
